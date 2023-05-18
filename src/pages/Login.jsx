@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BiShow, BiHide } from 'react-icons/Bi';
 import { FcGoogle } from 'react-icons/Fc';
-import { AiFillGithub } from 'react-icons/Ai';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../auth/AuthProvider';
 
@@ -12,7 +11,7 @@ import { AuthContext } from '../auth/AuthProvider';
 // this is login page 
 const Login = () => {
 
-    const { user, loginUser, loginWithGoogle, loginWithGithub } = useContext(AuthContext)
+    const { user, loginUser, loginWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -21,10 +20,19 @@ const Login = () => {
 
 
     const location = useLocation()
-
     const from = location?.state?.pathname || '/'
     console.log(from)
     // console.log(location)
+    const loginWithGoogleHandle = () => {
+        loginWithGoogle()
+            .then(res => {
+                setSuccess('Login successfull')
+                toast.success('Login successfull')
+            })
+            .catch(e => console.log(e))
+    }
+
+
     const sigininuser = e => {
         e.preventDefault()
         setError('')
@@ -91,7 +99,7 @@ const Login = () => {
                             </div>
                             <div className="form-control">
                                 <div className='flex justify-start gap-2 items-center'>
-                                <input type="checkbox" className="checkbox checkbox-primary" />
+                                    <input type="checkbox" className="checkbox checkbox-primary" />
                                     <span className="label-text">Remember me</span>
                                 </div>
                             </div>
@@ -101,7 +109,7 @@ const Login = () => {
                             <div className='mb-5'>
                                 <h3 className='font-bold text-center'>Or</h3>
                                 <div className='mt-2 flex justify-between items-center border-2 border-primary rounded-lg'>
-                                    <button onClick={loginWithGoogle} type='button' className='flex justify-center items-center text-xl   flex-grow px-3 py-2 w-full'><FcGoogle className='text-2xl'></FcGoogle> Signin with Google</button>
+                                    <button onClick={loginWithGoogleHandle} type='button' className='flex justify-center items-center text-xl   flex-grow px-3 py-2 w-full'><FcGoogle className='text-2xl'></FcGoogle> Signin with Google</button>
 
                                 </div>
                             </div>
