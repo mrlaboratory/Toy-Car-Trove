@@ -32,8 +32,8 @@ const navitem = <> <NavLink to='/'>Home</NavLink>
      
        
        
-        <Link  to='/user' className=' tooltip tooltip-left' ><img  className='w-12 ml-3 rounded-full border-2 border-primary ' src='https://mrlaboratory.github.io/img/user.png' alt="" />
-        </Link>
+            <img  className='w-12 ml-3 rounded-full border-2 border-primary ' src='https://mrlaboratory.github.io/img/user.png' alt="" />
+      
        
         
       </div>
