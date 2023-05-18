@@ -4,8 +4,8 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
 
 const navitem = <> <NavLink to='/'>Home</NavLink>
-<NavLink to='/about'>About</NavLink>
-<NavLink to='/contact'>Contact</NavLink>
+<NavLink to='/login'>Login</NavLink>
+<NavLink to='/register'>Register</NavLink>
 <NavLink to='/addcars'>Add cars</NavLink>
 </>
   
