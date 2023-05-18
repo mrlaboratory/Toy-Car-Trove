@@ -1,15 +1,15 @@
 import React from 'react';
 import { Gallery } from 'react-grid-gallery';
 import GalleryImages from '../components/GalleryImages';
+import Category from '../components/Category';
 
 const Home = () => {
     return (
         <div>
 
 
-          <GalleryImages></GalleryImages>
-       
-            
+         <Category></Category>
+
         </div>
     );
 };

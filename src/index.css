@@ -4,24 +4,64 @@
 
 
 
+html {
+  scroll-behavior: smooth;
+}
 
 .wiggle-image {
-    position: absolute;
-    animation: wiggle 5s infinite;
-    transform: rotate(20deg);
-    
+  position: absolute;
+  animation: wiggle 5s infinite;
+  transform: rotate(20deg);
+
+}
+
+div#ReactGridGallery {
+  background: #f379a7;
+}
+
+@keyframes wiggle {
+  0% {
+    right: 0%;
+
   }
-  
-  @keyframes wiggle {
-    0% {
-     right:  0%;
-    
-    }
-    50% {
-     right: 50%;
-    }
-    100% {
-      right: 100%;
-    }
+
+  50% {
+    right: 50%;
   }
-  
+
+  100% {
+    right: 100%;
+  }
+}
+
+ul.react-tabs__tab-list {
+  margin: 0px !important;
+  border-bottom: 0px !important;
+
+
+}
+
+.react-tabs__tab--selected {
+  /* border-top: 2px solid #e5e7eb !IMPORTANT;
+  border-left: 2px solid #e5e7eb !IMPORTANT;
+  border-right: 2px solid #e5e7eb !IMPORTANT; */
+}
+
+.react-tabs__tab--selected {
+  background-color: #f379a7 !IMPORTANT;
+  color: white !IMPORTANT;
+  border: none !IMPORTANT;
+  border-radius: 8px !IMPORTANT;
+  @apply text-lg md:font-bold  btn-primary mr-2 text-white
+}
+
+.react-tabs__tab-panel--selected {
+  /* background: white;
+  @apply border-b-2 border-x-2 border-gray-200 p-5 */
+}
+
+.react-tabs__tab {
+  border: none !IMPORTANT;
+  border-radius: 8px !IMPORTANT;
+  @apply text-lg md:font-bold  btn-secondary m-1 text-white 
+}
