@@ -9,13 +9,13 @@
     position: absolute;
     animation: wiggle 5s infinite;
     transform: rotate(20deg);
+    
   }
   
   @keyframes wiggle {
     0% {
      right:  0%;
-     
-
+    
     }
     50% {
      right: 50%;

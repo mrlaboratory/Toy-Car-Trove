@@ -1,12 +1,14 @@
 import React from 'react';
-import Slider from '../components/Slider';
+import { Gallery } from 'react-grid-gallery';
+import GalleryImages from '../components/GalleryImages';
 
 const Home = () => {
     return (
         <div>
 
 
-           <Slider></Slider>
+          <GalleryImages></GalleryImages>
+       
             
         </div>
     );
