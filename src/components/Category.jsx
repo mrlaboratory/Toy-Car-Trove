@@ -1,16 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { AiFillStar } from 'react-icons/Ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/Ai';
 import { BsStarHalf } from 'react-icons/Bs';
+import Rating from 'react-rating';
 
 
 const Category = () => {
+    const [data, setData] = useState([])
+    const [category, setCategory] = useState('Classic Cars')
 
-    const handleLoadData = id => {
-        console.log(id)
+    const handleLoadData = cat => {
+        setData([])
+        console.log(cat)
+        setCategory(cat)
 
     }
+
+    useEffect(() => {
+        category && fetch(`http://localhost:3000/toysByCategory/${category}`)
+            .then(res => res.json())
+            .then(d => {
+                console.log(d)
+                setData(d)
+            })
+
+    }, [category])
+
+    const catJsxData = <div>
+        <div className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>
+            {
+                data?.map((toy) => <div data-aos="zoom-in" key={toy._id} className='border-2 border-gray-200 bg-white rounded-lg p-3 '>
+                    <img className='rounded-lg' src={toy.itemPicture} alt="" />
+                    <div>
+                        <h2 className='text-xl my-2'>{toy.itemName}</h2>
+                        <h3>Price : {toy.price}$</h3>
+                        <div className='my-2 flex gap-2'>
+                            Rating : ({toy.rating})<div className='flex gap-1 justify-center items-center'>
+
+
+                                <Rating
+                                    placeholderRating={toy.rating}
+                                    readonly={true}
+                                    emptySymbol={<AiOutlineStar className='text-[#FFD700]'></AiOutlineStar>}
+                                    placeholderSymbol={<AiFillStar className='text-[#FFD700]'></AiFillStar>}
+                                    fullSymbol={ <BsStarHalf className='text-[#FFD700]'></BsStarHalf>}
+                                />
+                            </div>
+                        </div>
+                        <button className='btn btn-sm btn-primary text-white w-full'>View Details</button>
+                       
+                    </div>
+
+                </div>)
+            }
+
+
+        </div>
+
+    </div>
+
 
 
     return (
@@ -26,37 +75,13 @@ const Category = () => {
                     </TabList>
 
                     <TabPanel>
-                        <div>
-                            <div className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>
-                                <div className='border-2 border-gray-200 bg-white rounded-lg p-3 '>
-                                    <img className='rounded-lg' src="../../public/images/car.jpg" alt="" />
-                                    <div>
-                                        <h2 className='text-xl my-2'>Name</h2>
-                                        <h3>Price : $20</h3>
-                                        <div className='my-2 flex gap-2'>
-                                            Rating : (4.5)<div className='flex gap-1 justify-center items-center'>
-                                                <AiFillStar className='text-[#FFD700]'></AiFillStar>
-                                                <AiFillStar className='text-[#FFD700]'></AiFillStar>
-                                                <AiFillStar className='text-[#FFD700]'></AiFillStar>
-                                                <AiFillStar className='text-[#FFD700]'></AiFillStar>
-                                                <BsStarHalf className='text-[#FFD700]'></BsStarHalf>
-                                            </div>
-                                        </div>
-                                        <button className='btn btn-sm btn-primary text-white w-full'>View Details</button>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        {catJsxData}
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 2</h2>
+                        {catJsxData}
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 2</h2>
+                        {catJsxData}
                     </TabPanel>
                 </Tabs>
             </div>

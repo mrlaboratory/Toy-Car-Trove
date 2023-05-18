@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../auth/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const AddToy = () => {
 
@@ -16,6 +17,7 @@ const AddToy = () => {
         e.preventDefault()
         const form = e.target
         const itemName = form.itemName.value
+        const itemPicture = form.itemPicture.value
         const sellerName = form.sellerName.value || 'User'
         const sellerEmail = form.sellerEmail.value
         const category = selectedCarCategory
@@ -24,7 +26,7 @@ const AddToy = () => {
         const quantity = form.quantity.value 
         const description = form.description.value 
 
-        const toyInfo = {itemName, sellerName, sellerEmail, category, price, rating, quantity, description}
+        const toyInfo = {itemName,itemPicture, sellerName, sellerEmail, category, price, rating, quantity, description}
         console.log(toyInfo)
         fetch(`http://localhost:3000/addToy`,{
             method:'POST',
@@ -34,8 +36,16 @@ const AddToy = () => {
             body: JSON.stringify(toyInfo)
         })
         .then(res => res.json())
-        .then(d => console.log(d))
-        .catch(e => console.log(e))
+        .then(d => {
+            console.log(d)
+            if(d.acknowledged){
+                toast.success('New Car Toy added !!')
+            }
+        })
+        .catch(e => {
+            console.log(e)
+            
+        })
 
 
 
@@ -50,7 +60,8 @@ const AddToy = () => {
             <div className='flex justify-center'>
 
                 <form onSubmit={handleAddToy} className='p-2 w-full sm:w-[500px]'>
-                    <input required type="text" name='itemName' placeholder="Toy car name .." className="input w-full border border-gray-200" />
+                    <input required type="text" name='itemName' placeholder="Toy name .." className="input w-full border border-gray-200" />
+                    <input required type="text" name='itemPicture' placeholder="Toy Picture url .." className="input w-full border border-gray-200 mt-2" />
 
                     <div className='flex flex-col sm:flex-row gap-2 my-2'>
 
