@@ -28,12 +28,12 @@ const Category = () => {
     }, [category])
 
     const catJsxData = <div>
-        <div className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>
+        <div className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-gray-500'>
             {
                 data?.map((toy) => <div data-aos="zoom-in" key={toy._id} className='border-2 border-gray-200 bg-white rounded-lg p-3 '>
                     <img className='rounded-lg' src={toy.itemPicture} alt="" />
                     <div>
-                        <h2 className='text-xl my-2'>{toy.itemName}</h2>
+                        <h2 className='text-xl my-2 font-bold '>{toy.itemName}</h2>
                         <h3>Price : {toy.price}$</h3>
                         <div className='my-2 flex gap-2'>
                             Rating : ({toy.rating})<div className='flex gap-1 justify-center items-center'>
