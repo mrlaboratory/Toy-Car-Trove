@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddCars = () => {
+const AddToy = () => {
     const [rating, setRating] = useState('');
 
     const handleRatingChange = (event) => {
@@ -63,4 +63,4 @@ const AddCars = () => {
     );
 };
 
-export default AddCars;
+export default AddToy;

@@ -6,9 +6,19 @@ const Navbar = () => {
   const { signOutUser, user } = useContext(AuthContext)
 
   const navitem = <> <NavLink to='/'>Home</NavLink>
-    <NavLink to='/login'>Login</NavLink>
-    <NavLink to='/register'>Register</NavLink>
-    <NavLink to='/addcars'>Add cars</NavLink>
+    {
+      !user && <> <NavLink to='/login'>Login</NavLink>
+        <NavLink to='/register'>Register</NavLink></>
+    }
+    <NavLink to='/alltoys'>All Toys</NavLink>
+
+    {
+      user && <>
+        <NavLink to='/mytoys'>My Toys</NavLink>
+        <NavLink to='/addtoy'>Add A Toy</NavLink>
+      </>
+    }
+
   </>
 
   return (
@@ -23,7 +33,9 @@ const Navbar = () => {
 
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost  text-xl uppercase">Toy Car Trove</Link>
+        <Link to='/' className=" uppercase">
+          <img className='w-[150px] h-full' src="https://i.ibb.co/X4yn9gt/Untitled-design-2.png" alt="" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-bold gap-3 text-color">
@@ -33,21 +45,24 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end " >
-{
-  user ?  <div className="dropdown dropdown-end">
-  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-    <div className="w-10 rounded-full border-2 border-primary">
-      <img className='w-full rounded-full ' src="https://mrlaboratory.github.io/img/user.png" />
-    </div>
-  </label>
-  <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-  
-    <li><a onClick={signOutUser} >Logout</a></li>
-  </ul>
-</div> : <Link to='login' className='btn btn-primary text-white'>Login</Link>
-}
+        {
+          user ? <div className="dropdown dropdown-end tooltip hover:tooltip-open tooltip-left" data-tip={user?.displayName}>
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full border-2 border-primary " >
 
-       
+                <img className='w-full rounded-full ' src="https://mrlaboratory.github.io/img/user.png" />
+
+
+              </div>
+            </label>
+            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+
+              <li><a onClick={signOutUser} >Logout</a></li>
+            </ul>
+          </div> : <Link to='login' className='btn btn-primary text-white'>Login</Link>
+        }
+
+
       </div>
     </div>
   );

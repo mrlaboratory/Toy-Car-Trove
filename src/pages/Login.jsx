@@ -32,7 +32,6 @@ const Login = () => {
             .catch(e => console.log(e))
     }
 
-
     const sigininuser = e => {
         e.preventDefault()
         setError('')
@@ -40,7 +39,6 @@ const Login = () => {
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        // console.log(email,password)
         loginUser(email, password)
             .then(res => {
                 setSuccess('Login successfull')
@@ -56,7 +54,6 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            console.log(1)
             navigate(from, { replace: true })
         }
     }, [user, from])
