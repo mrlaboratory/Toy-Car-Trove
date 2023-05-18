@@ -5,7 +5,9 @@ const Navbar = () => {
 
 const navitem = <> <NavLink to='/'>Home</NavLink>
 <NavLink to='/about'>About</NavLink>
-<NavLink to='/contact'>Contact</NavLink></>
+<NavLink to='/contact'>Contact</NavLink>
+<NavLink to='/addcars'>Add cars</NavLink>
+</>
   
   return (
     <div className="navbar " id='navbar'>

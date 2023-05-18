@@ -8,6 +8,9 @@ html {
   scroll-behavior: smooth;
 }
 
+ul .active{
+  @apply text-primary 
+}
 .wiggle-image {
   position: absolute;
   animation: wiggle 5s infinite;
