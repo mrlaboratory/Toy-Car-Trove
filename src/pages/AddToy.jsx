@@ -57,7 +57,7 @@ const AddToy = () => {
 
 
     return (
-        <div className='p-5'>
+        <div className='p-5 container mx-auto'>
             <h2 className='text-center my-3 font-bold text-2xl'>Add new toy car</h2>
             <div className='flex justify-center'>
 

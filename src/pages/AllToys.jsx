@@ -28,7 +28,7 @@ const AllToys = () => {
 
     console.log(data)
     return (
-        <div className='p-3'>
+        <div className='p-3 container mx-auto'>
             <h2 className='text-center my-3 font-bold text-2xl'>All toys</h2>
             <div className='p-5 flex justify-center items-center'>
             <input type="text" ref={queryRef} onChange={()=> handlechange()} placeholder="Search toy.." className="input w-full sm:w-[500px] border border-gray-200" />

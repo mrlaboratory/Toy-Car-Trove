@@ -67,7 +67,7 @@ const Reviews = () => {
             <div className='p-5 mt-5'>
                 <Swiper
                     spaceBetween={20}
-                    slidesPerView={isMobile ? 2 : 4}
+                    slidesPerView={isMobile ? 2 : 3}
                 // onSlideChange={() => console.log('slide change')}
                 // onSwiper={(swiper) => console.log(swiper)}
                 >

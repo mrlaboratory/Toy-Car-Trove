@@ -86,7 +86,7 @@ const images = [
 
 const GalleryImages = () => {
     return (
-        <div className='p-5'>
+        <div className='p-5 bg-white'>
             <h2 className='text-center my-6 font-bold text-3xl uppercase text-gray-600'>gallery</h2>
             <div>
                 <Gallery images={images} />

@@ -124,7 +124,7 @@ const MyToys = () => {
 
 
     return (
-        <div className='p-3'>
+        <div className='p-3 container mx-auto'>
             <h2 className='text-center my-3 font-bold text-2xl'>{toys && (toys?.length !== 0) ? 'Your all toys item' : 'You did not add any toy yet...'}</h2>
             <div className='p-5 flex justify-center items-center'>
             </div>

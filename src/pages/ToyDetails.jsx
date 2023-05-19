@@ -17,7 +17,7 @@ const ToyDetails = () => {
     }, []);
 
     return (
-        <div className='p-5'>
+        <div className='p-5 container mx-auto'>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
                 <img  data-aos="fade-right" className=' rounded-lg border-2 border-gray-200 w-full' src={toy.itemPicture} alt="" />
                 <div  data-aos="fade-left" className='text-gray-600 w-full h-full bg-white rounded-lg border border-gray-200'>

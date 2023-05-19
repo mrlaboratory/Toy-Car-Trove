@@ -2,9 +2,9 @@ import React from 'react';
 
 const Subscribe = () => {
     return (
-        <div className='p-5'>
+        <div className=''>
             <div className='border border-gray-200'>
-                <div className="grid grid-cols-1 sm:grid-cols-2 rounded-lg h-[400px]  bg-white bg-gradient-to-l from-primary to-transparent">
+                <div className="grid grid-cols-1 sm:grid-cols-2 rounded-lg h-uto  bg-white bg-gradient-to-l from-primary to-transparent">
 
                     <div  data-aos="fade-right" className='p-5 flex justify-center items-center'>
                         <div>
@@ -23,7 +23,7 @@ const Subscribe = () => {
 
                         </div>
                     </div>
-                    <div  data-aos="fade-left" className=''>
+                    <div  data-aos="fade-left" className='flex justify-center items-center'>
                         <img src="https://i.ibb.co/HDgpjLZ/1000-F-245925706-M3i2np63-UOp9k-N1s-De-Gnky-G3-YNNW6u-VI-removebg-preview.png" alt="" />
 
                     </div>

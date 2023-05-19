@@ -29,7 +29,7 @@ const Category = () => {
     }, [category])
 
     const catJsxData = <div>
-        <div className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-gray-500'>
+        <div id='category' className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-gray-500'>
             {
                 data?.map((toy) => <div data-aos="zoom-in" key={toy._id} className='border-2 border-gray-200 bg-white rounded-lg p-3 '>
                     <img className='rounded-lg' src={toy.itemPicture} alt="" />

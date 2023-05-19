@@ -12,9 +12,22 @@ const Home = () => {
     return (
         <div>
 
+            <div className=''>
+                <Slider></Slider>
+            </div>
+            <div className='w-full bg-white'> <div className='container mx-auto'> <GalleryImages></GalleryImages> </div></div>
+            <div className='container mx-auto'>  <Category></Category> </div>
+            <div className='container mx-auto'> <Reviews></Reviews> </div>
+            <div className='container mx-auto'>  <LatestBlog></LatestBlog> </div>
+            <div className='w-full'>  <Subscribe></Subscribe> </div>
 
-      <LatestBlog></LatestBlog>
-         
+
+
+
+
+
+
+
 
         </div>
     );

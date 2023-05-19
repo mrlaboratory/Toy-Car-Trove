@@ -58,7 +58,7 @@ const Register = () => {
     }, [user, from])
 
     return (
-        <div className="">
+        <div className="container mx-auto">
             <div className="flex justify-center my-5">
 
                 <div className="w-full sm:w-[500px] p-5">

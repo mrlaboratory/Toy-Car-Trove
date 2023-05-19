@@ -19,7 +19,7 @@ const MainLayout = () => {
                     <Navbar></Navbar>
                 </div>
             </div>
-            <div className='container mx-auto '>
+            <div className=''>
                 <Outlet></Outlet>
             </div>
 
