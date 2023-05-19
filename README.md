@@ -19,3 +19,10 @@ Our Toy Cars Trove project aims to provide a comprehensive platform where buyers
 - Review section on home page
 - Category section on home page 
 - have private route 
+- Sorting toggle function on my toys page 
+- remember private page when user try to visit before login or register . after login then redirect the to the route
+- pagination functionality on all toys page 
+- Search functionality on all toys page
+
+
+

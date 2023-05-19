@@ -11,7 +11,7 @@ import useTitle from '../Hooks/useTitle';
 
 const Register = () => {
     useTitle('Register')
-    const { createUser, user } = useContext(AuthContext)
+    const { createUser, user, path } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -20,7 +20,7 @@ const Register = () => {
 
 
     const location = useLocation()
-    const from = location?.state?.pathname || '/'
+    const from = path || '/'
 
 
 
@@ -52,7 +52,6 @@ const Register = () => {
     }
     useEffect(() => {
         if (user) {
-            console.log(1)
             navigate(from, { replace: true })
         }
     }, [user, from])

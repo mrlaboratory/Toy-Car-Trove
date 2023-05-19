@@ -8,39 +8,56 @@ import { AuthContext } from '../auth/AuthProvider';
 const AllToys = () => {
 
     useTitle('All Toys')
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const loaderData = useLoaderData()
     const navigate = useNavigate()
     const location = useLocation()
-    const [data, setData] = useState(loaderData)
+    const [data, setData] = useState()
     const [q, setQ] = useState('')
     const queryRef = useRef('')
+
+    const [totalToys, setTotalToys] = useState(loaderData.totalToys)
+    const [limit, setLimit] = useState(10)
+    const [activePage, setActivePage] = useState(0)
+
+    const pages = Math.ceil((totalToys / limit))
+    const totalPages = [...Array(pages).keys()]
+    const perPageArray = [5, 10, 20, 30]
+
+
+
 
     const handlechange = () => {
         const query = queryRef.current.value;
         setQ(query)
-        console.log(query);
     }
 
-    // useEffect(()=> {
-    //     fetch(`http://localhost:3000/toysByText/${q}`)
-    //     .then(res => res.json())
-    //     .then(d => {
-    //         setData(d)
-    //     })
-    // },[q])
+    useEffect(()=> {
+        fetch(`http://localhost:3000/allToys?page=${activePage}&limit=${limit}`)
+        .then(res => res.json())
+        .then(d => {
+            setData(d)
+        })
+    },[limit,activePage])
+    useEffect(()=> {
+        fetch(`http://localhost:3000/toysByText?text=${q}`)
+        .then(res => res.json())
+        .then(d => {
+            setData(d)
+        })
+    },[q])
 
     const handleNavigate = id => {
-        if(user){
+        if (user) {
             navigate(`/toy/${id}`)
-        }else{
+        } else {
             toast.error('You have to log in first to view details')
             navigate(`/toy/${id}`, { state: location })
         }
     }
 
 
-    console.log(data)
+
     return (
         <div className='p-3 container mx-auto'>
             <h2 className='text-center my-3 font-bold text-2xl'>All toys</h2>
@@ -64,11 +81,11 @@ const AllToys = () => {
                         <tbody>
                             {
                                 data?.map((toy, i) => <tr key={toy._id}>
-                                    <th>{toy.itemName}</th>
-                                    <td>{toy.sellerName}</td>
-                                    <td>{toy.category}</td>
-                                    <td>{toy.price}$</td>
-                                    <td>{toy.quantity}</td>
+                                    <th>{toy?.itemName}</th>
+                                    <td>{toy?.sellerName}</td>
+                                    <td>{toy?.category}</td>
+                                    <td>{toy?.price}$</td>
+                                    <td>{toy?.quantity}</td>
                                     <td> <button onClick={() => handleNavigate(toy._id)} className='btn btn-sm btn-primary text-white'>View Details</button> </td>
                                 </tr>)
 
@@ -80,6 +97,24 @@ const AllToys = () => {
                 </div>
 
             </div>
+
+            <div className='flex justify-center items-center my-5 gap-2'>
+                <div className="btn-group">
+                    {
+                        totalPages?.map(i => <button onClick={() => setActivePage(i)} key={i} className={`btn border-none text-white bg-[#95b3e0] btn-md ${activePage == i ? 'btn-active text-white' : ''}`}>{i+1}</button>)
+                    }
+
+                </div>
+                <select onChange={(e) => setLimit(e.target.value)} value={limit}  className="select w-[100px] border border-gray-200">
+
+                    {
+                        perPageArray?.map(i =>  <option value={i} key={i}>{i}</option>)
+                    }
+                </select>
+               
+
+            </div>
+
         </div>
     );
 };

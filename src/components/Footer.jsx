@@ -8,7 +8,7 @@ const Footer = () => {
         <div>
             <footer className="footer p-2 py-10  text-gray-600">
                 <div>
-                    <img className='w-[150px] h-full' src="https://i.ibb.co/X4yn9gt/Untitled-design-2.png" alt="" />
+                    <img className='w-[150px] h-full' src="https://i.ibb.co/yfzt3qS/Untitled-design-12.png" alt="" />
                     <p>Thank you for choosing <span className='fond-bold text-primary'>Toy Car Trove</span> , <br /> and we hope you enjoy browsing our collection <br /> as much as we enjoyed curating it. </p>
                 </div>
                 <div>

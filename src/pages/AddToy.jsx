@@ -75,7 +75,7 @@ const AddToy = () => {
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 my-2'>
 
                         <div className=''>
-                            <select required className="select w-full" id="carCategory" value={selectedCarCategory} onChange={handleCategoryChange}>
+                            <select required className="select w-full border border-gray-200" id="carCategory" value={selectedCarCategory} onChange={handleCategoryChange}>
                                 <option value="">Select a car type</option>
                                 <option value="Classic Cars">Classic Cars</option>
                                 <option value="Racing Cars">Racing Cars</option>

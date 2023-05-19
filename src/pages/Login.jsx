@@ -14,7 +14,7 @@ const Login = () => {
 
     useTitle('Login')
 
-    const { user, loginUser, loginWithGoogle } = useContext(AuthContext)
+    const { user, loginUser, loginWithGoogle, path } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -23,7 +23,7 @@ const Login = () => {
 
 
     const location = useLocation()
-    const from = location?.state?.pathname || '/'
+    const from = path || '/'
     console.log(from)
     // console.log(location)
     const loginWithGoogleHandle = () => {
@@ -51,6 +51,7 @@ const Login = () => {
             .catch(e => {
                 setError(e.message)
                 console.log(e.message)
+                toast.error(e.message)
             })
 
     }

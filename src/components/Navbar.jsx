@@ -35,9 +35,9 @@ const Navbar = () => {
 
           </ul>
         </div>
-        <Link to='/' className=" ">
-          <img className='w-[150px] h-full' src="https://i.ibb.co/X4yn9gt/Untitled-design-2.png" alt="" />
-          <h1>Toy Car Trove</h1>
+        <Link to='/' className=" flex ">
+          <img className='w-[30px] sm:w-[50px] h-full' src="https://i.ibb.co/yfzt3qS/Untitled-design-12.png" alt="" />
+          <h2 className='text-primary font-bold md:text-lg'>Toy Car Trove</h2>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -47,7 +47,10 @@ const Navbar = () => {
 
         </ul>
       </div>
-      <div className="navbar-end " >
+      <div className=" navbar-end " >
+        {
+          user && <button className='btn btn-primary text-white mr-2' onClick={signOutUser}>Logout</button>
+        }
         {
           user ? <div className="dropdown dropdown-end tooltip hover:tooltip-open tooltip-left" data-tip={user?.displayName}>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
