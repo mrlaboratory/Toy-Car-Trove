@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import { AiFillStar, AiOutlineStar } from 'react-icons/Ai';
 import { BsStarHalf } from 'react-icons/Bs';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 
 
 const Category = () => {
@@ -48,7 +49,7 @@ const Category = () => {
                                 />
                             </div>
                         </div>
-                        <button className='btn btn-sm btn-primary text-white w-full'>View Details</button>
+                        <Link to={`/toy/${toy._id}`} className='btn btn-sm btn-primary text-white w-full'>View Details</Link>
                        
                     </div>
 
