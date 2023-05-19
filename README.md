@@ -23,6 +23,7 @@ Our Toy Cars Trove project aims to provide a comprehensive platform where buyers
 - remember private page when user try to visit before login or register . after login then redirect the to the route
 - pagination functionality on all toys page 
 - Search functionality on all toys page
+- Added JWT , for more secure 
 
 
 

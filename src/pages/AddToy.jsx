@@ -32,8 +32,9 @@ const AddToy = () => {
         console.log(toyInfo)
         fetch(`http://localhost:3000/addToy`,{
             method:'POST',
-            headers : {
-                'content-type':'application/json'
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('userToken')}`
             },
             body: JSON.stringify(toyInfo)
         })

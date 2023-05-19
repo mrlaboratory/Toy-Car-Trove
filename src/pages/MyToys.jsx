@@ -7,7 +7,7 @@ import { AiOutlineEye } from 'react-icons/Ai';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { toast } from 'react-hot-toast';
-import { AiOutlineArrowDown , AiOutlineArrowUp} from 'react-icons/Ai';
+import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/Ai';
 
 
 const MyToys = () => {
@@ -15,9 +15,9 @@ const MyToys = () => {
     const [change, setChange] = useState(false)
     const [selectedCarCategory, setSelectedCarCategory] = useState("");
     const [current, setCurrent] = useState([])
-    const [sort,setSort] = useState(true)
+    const [sort, setSort] = useState(true)
 
-    
+
 
 
     const handleCategoryChange = (event) => {
@@ -28,14 +28,21 @@ const MyToys = () => {
     useTitle('My Toys')
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:3000/mytoys?email=${user.email}&sort=${sort}`)
+        fetch(`http://localhost:3000/mytoys?email=${user.email}&sort=${sort}`, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('userToken')}`
+            },
+
+        })
             .then(res => res.json())
             .then(d => {
                 if (!d.error) {
                     setToys(d)
-                    console.log(d)
+
                 } else {
-                    console.log(d.error);
+                    console.log('error', d.error);
                 }
 
 
@@ -60,7 +67,8 @@ const MyToys = () => {
         fetch(`http://localhost:3000/update/${current._id}`, {
             method: "PUT",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('userToken')}`
             },
             body: JSON.stringify(toyInfo)
 
@@ -68,11 +76,11 @@ const MyToys = () => {
             .then(res => res.json())
             .then(d => {
                 console.log(d)
-                if(d.acknowledged){
+                if (d.acknowledged) {
                     setChange(!change)
                     toast.success('Toy updated succcessfully !!')
                 }
-                
+
             })
             .catch(e => console.log(e))
     }
@@ -101,7 +109,8 @@ const MyToys = () => {
                 fetch(`http://localhost:3000/deleteToy/${id}`, {
                     method: "DELETE",
                     headers: {
-                        'content-type': 'application/json'
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('userToken')}`
                     },
 
                 })
@@ -138,13 +147,13 @@ const MyToys = () => {
                                 <tr>
                                     <th>Toy Name</th>
                                     <th>Category</th>
-                                    <th onClick={()=> setSort(!sort)}>
+                                    <th onClick={() => setSort(!sort)}>
                                         <div className='flex gap-2 cursor-pointer'>
-                                        Price {!sort ? 
-                                        <AiOutlineArrowUp className='text-lg font-bold'></AiOutlineArrowUp> : 
-                                        <AiOutlineArrowDown  className='text-lg font-bold'></AiOutlineArrowDown>}
+                                            Price {!sort ?
+                                                <AiOutlineArrowUp className='text-lg font-bold'></AiOutlineArrowUp> :
+                                                <AiOutlineArrowDown className='text-lg font-bold'></AiOutlineArrowDown>}
                                         </div>
-                                         </th>
+                                    </th>
                                     <th>Avilable Quantity</th>
                                     <th>Action</th>
                                 </tr>
