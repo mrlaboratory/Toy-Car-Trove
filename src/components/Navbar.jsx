@@ -11,13 +11,15 @@ const Navbar = () => {
         <NavLink className='text-gray-500' to='/register'>Register</NavLink></>
     }
     <NavLink className='text-gray-500' to='/alltoys'>All Toys</NavLink>
-
+ 
     {
       user && <>
         <NavLink className='text-gray-500' to='/mytoys'>My Toys</NavLink>
         <NavLink className='text-gray-500' to='/addtoy'>Add A Toy</NavLink>
       </>
     }
+       <NavLink className='text-gray-500' to='/blogs'>Blogs</NavLink>
+
 
   </>
 

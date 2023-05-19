@@ -2,7 +2,7 @@ import React from 'react';
 
 const LatestBlog = () => {
     return (
-        <div className='p-5'>
+        <div className='p-5 my-5'>
             <h2 className='text-center my-6 font-bold text-3xl uppercase text-gray-600 white'>Latest Blog</h2>
             <div className='grid grid-cols-2 md:grid-cols-4 gap-3'>
                 <div className='p-3 rounded-lg border border-gray-200 bg-white flex flex-col justify-between ' data-aos="flip-down">

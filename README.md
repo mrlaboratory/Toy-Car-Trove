@@ -3,6 +3,12 @@
 ## [Live link ](https://toy-cars-32073.web.app/)
 ## https://toy-cars-32073.web.app/
 
+
+Welcome to Toy Cars Trove, your ultimate destination for toy car enthusiasts and collectors! At Toy Cars Trove, we bring you an exciting marketplace dedicated to all things toy cars.
+
+Our Toy Cars Trove project aims to provide a comprehensive platform where buyers and sellers can connect, explore, and trade a wide variety of toy cars. Whether you're a passionate collector looking for rare and vintage models or a parent seeking the perfect gift for your little one, Toy Cars Trove has something for everyone.
+
+
 ### Functionality 
 - Login and register 
 - Toy car collection 

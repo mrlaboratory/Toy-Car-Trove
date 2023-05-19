@@ -1,21 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { AiFillStar, AiOutlineStar } from 'react-icons/Ai';
 import { BsStarHalf } from 'react-icons/Bs';
 import Rating from 'react-rating';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 
 const Category = () => {
+    const {user} = useContext(AuthContext)
     const [data, setData] = useState([])
     const [category, setCategory] = useState('Classic Cars')
-
+    const navigate = useNavigate()
+    const location = useLocation()
     const handleLoadData = cat => {
         setData([])
         console.log(cat)
         setCategory(cat)
 
+    }
+    const handleNavigate = id => {
+        if(user){
+            navigate(`/toy/${id}`)
+        }else{
+            toast.error('You have to log in first to view details')
+            navigate(`/toy/${id}`, { state: location })
+        }
     }
 
     useEffect(() => {
@@ -49,7 +61,7 @@ const Category = () => {
                                 />
                             </div>
                         </div>
-                        <Link to={`/toy/${toy._id}`} className='btn btn-sm btn-primary text-white w-full'>View Details</Link>
+                        <button onClick={() => handleNavigate(toy._id)} className='btn btn-sm btn-primary text-white w-full'>View Details</button>
                        
                     </div>
 
