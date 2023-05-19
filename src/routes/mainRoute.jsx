@@ -8,12 +8,13 @@ import PrivateRoute from "./PrivateRoute";
 import MyToys from "../pages/MyToys";
 import AllToys from "../pages/AllToys";
 import ToyDetails from "../pages/ToyDetails";
+import ErrorPage from "../pages/ErrorPage";
 
 
 
 const router = createBrowserRouter([
     {
-        path: '/', element: <MainLayout></MainLayout>, errorElement: <div>Page not found </div>, children: [
+        path: '/', element: <MainLayout></MainLayout>, errorElement: <ErrorPage></ErrorPage> , children: [
             { path: '/', element: <Home></Home> },
             { path: '/addtoy', element: <PrivateRoute><AddToy></AddToy></PrivateRoute> },
             { path: '/mytoys', element: <PrivateRoute> <MyToys></MyToys> </PrivateRoute> },
