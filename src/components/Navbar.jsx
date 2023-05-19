@@ -37,6 +37,7 @@ const Navbar = () => {
         </div>
         <Link to='/' className=" ">
           <img className='w-[150px] h-full' src="https://i.ibb.co/X4yn9gt/Untitled-design-2.png" alt="" />
+          <h1>Toy Car Trove</h1>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -52,7 +53,7 @@ const Navbar = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full border-2 border-primary " >
 
-                <img className='w-full rounded-full ' src="https://mrlaboratory.github.io/img/user.png" />
+                <img className='w-full rounded-full ' src={user?.photoURL} />
 
 
               </div>
