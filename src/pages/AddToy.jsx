@@ -30,7 +30,7 @@ const AddToy = () => {
 
         const toyInfo = {itemName,itemPicture, sellerName, sellerEmail, category, price, rating, quantity, description}
         console.log(toyInfo)
-        fetch(`http://localhost:3000/addToy`,{
+        fetch(`https://toy-car-trove-server.vercel.app/addToy`,{
             method:'POST',
             headers: {
                 'content-type': 'application/json',
@@ -43,6 +43,7 @@ const AddToy = () => {
             console.log(d)
             if(d.acknowledged){
                 toast.success('New Car Toy added !!')
+                form.reset()
             }
         })
         .catch(e => {
@@ -80,7 +81,7 @@ const AddToy = () => {
                                 <option value="">Select a car type</option>
                                 <option value="Classic Cars">Classic Cars</option>
                                 <option value="Racing Cars">Racing Cars</option>
-                                <option value="Collectibles Cars">Collectibles Cars</option>
+                                <option value="Sports Cars">Sports Cars</option>
                                 <option value="Vintage Cars">Vintage Cars</option>
                                 <option value="Muscle Cars">Muscle Cars</option>
                                 <option value="Sports Cars">Sports Cars</option>

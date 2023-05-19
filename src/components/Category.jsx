@@ -17,7 +17,6 @@ const Category = () => {
     const location = useLocation()
     const handleLoadData = cat => {
         setData([])
-        console.log(cat)
         setCategory(cat)
 
     }
@@ -31,10 +30,9 @@ const Category = () => {
     }
 
     useEffect(() => {
-        category && fetch(`http://localhost:3000/toysByCategory/${category}`)
+        category && fetch(`https://toy-car-trove-server.vercel.app/toysByCategory/${category}`)
             .then(res => res.json())
             .then(d => {
-                console.log(d)
                 setData(d)
             })
 
@@ -43,7 +41,7 @@ const Category = () => {
     const catJsxData = <div>
         <div id='category' className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-gray-500'>
             {
-                data?.map((toy) => <div data-aos="zoom-in" key={toy._id} className='border-2 border-gray-200 bg-white rounded-lg p-3 '>
+                data?.map((toy) => <div data-aos="zoom-in" key={toy._id} className='border-2 border-gray-200 bg-white rounded-lg p-3 flex flex-col justify-between'>
                     <img className='rounded-lg' src={toy.itemPicture} alt="" />
                     <div>
                         <h2 className='text-xl my-2 font-bold '>{toy.itemName}</h2>
@@ -84,7 +82,7 @@ const Category = () => {
                     <TabList>
                         <Tab onClick={() => handleLoadData('Classic Cars')}>Classic Cars</Tab>
                         <Tab onClick={() => handleLoadData('Racing Cars')}>Racing Cars</Tab>
-                        <Tab onClick={() => handleLoadData('Collectibles Cars')}>Collectibles Cars</Tab>
+                        <Tab onClick={() => handleLoadData('Sports Cars')}>Sports Cars</Tab>
                     </TabList>
 
                     <TabPanel>

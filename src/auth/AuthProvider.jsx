@@ -7,7 +7,7 @@ export const AuthContext = createContext()
 
 
 const AuthProvider = ({ children }) => {
-   
+
     const [path, setPath] = useState('/')
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -16,48 +16,66 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
-
-
-    const loginUser = (email, password) => {
+    const signOutUser = () => {
+        localStorage.removeItem('userToken')
         setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
+        toast.success('Account signout')
+        return signOut(auth)
     }
 
     const loginWithGoogle = () => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
-
-
-    const signOutUser = () => {
+    const loginUser = (email, password) => {
         setLoading(true)
-        toast.success('Account signout')
-        return signOut(auth)
+        return signInWithEmailAndPassword(auth, email, password)
     }
+
+
+const JWT = uu => {
+    fetch('https://toy-car-trove-server.vercel.app/jwt', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(uu)
+    })
+        .then(res => res.json())
+        .then(d => {
+            console.log(d.token)
+            localStorage.setItem('userToken', d.token)
+        })
+        .catch(e => console.log(e))
+}
 
 
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            if(currentUser && currentUser?.email){
-                const loggedUser = {
-                    email: currentUser.email,
+            const localToken = localStorage.getItem('userToken')
+            if (currentUser && currentUser?.email) {
 
-                }
-                fetch('http://localhost:3000/jwt',{
-                    method :'POST', 
-                    headers: {
-                        'content-type':'application/json'
-                    },
-                    body:JSON.stringify(loggedUser)
-                })
-                .then(res => res.json())
-                .then(d => {
-                    console.log(d.token)
-                    localStorage.setItem('userToken',d.token)
-                })
-                .catch(e=> console.log(e))
+                // fetch(`https://toy-car-trove-server.vercel.app/check`, {
+                //     method: 'GET',
+                //     headers: {
+                //         'content-type': 'application/json',
+                //         authorization: `Bearer ${localStorage.getItem('userToken')}`
+                //     },
+                // })
+                // .then(res => res.json())
+                // .then(d => {
+                //     console.log(d)
+                //     if(d.error ){
+                //         toast.error('Session expire , Please login Again !!')
+                //     }
+                // })
+                // .catch(e => console.log(e))
+
+
+
+
             }
             setLoading(false)
         })
@@ -65,11 +83,6 @@ const AuthProvider = ({ children }) => {
             return unsub()
         }
     }, [])
-
-
-
-
-
 
     const info = {
         auth,
@@ -81,6 +94,7 @@ const AuthProvider = ({ children }) => {
         loginWithGoogle,
         path,
         setPath,
+        JWT,
 
 
     }

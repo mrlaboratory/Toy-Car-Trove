@@ -11,7 +11,7 @@ import useTitle from '../Hooks/useTitle';
 
 const Register = () => {
     useTitle('Register')
-    const { createUser, user, path } = useContext(AuthContext)
+    const { createUser, user, path,JWT } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -35,6 +35,10 @@ const Register = () => {
         const photo = form.photo.value || 'https://mrlaboratory.github.io/img/user.png'
         createUser(email, password)
             .then(res => {
+                const loggedUser = {
+                    email: res.email,
+                }
+                JWT(loggedUser)
                 setSuccess('Account created successfully')
                 toast.success('Account created successfully')
                 updateProfile(res.user, {

@@ -5,11 +5,9 @@ import Spinner from '../components/Spinner';
 import { useEffect } from 'react';
 import { AuthContext } from '../auth/AuthProvider';
 
-
 const PrivateRoute = ({ children }) => {
    const { user, loading, setPath } = useContext(AuthContext)
    const location = useLocation()
-   const from = '/login'
    useEffect(() => {
       setPath(location.pathname)
    }, [location.pathname])
@@ -20,8 +18,10 @@ const PrivateRoute = ({ children }) => {
    if (user) {
       return <>{children}</>
    } else {
-      return <Navigate to={from} state={location}></Navigate>
+      return <Navigate to='/login' state={location}></Navigate>
    }
 };
+
+
 
 export default PrivateRoute;

@@ -28,7 +28,7 @@ const MyToys = () => {
     useTitle('My Toys')
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:3000/mytoys?email=${user.email}&sort=${sort}`, {
+        fetch(`https://toy-car-trove-server.vercel.app/mytoys?email=${user.email}&sort=${sort}`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json',
@@ -64,7 +64,7 @@ const MyToys = () => {
         const description = form.description.value
 
         const toyInfo = { itemName, itemPicture, sellerName, sellerEmail, category, price, rating, quantity, description }
-        fetch(`http://localhost:3000/update/${current._id}`, {
+        fetch(`https://toy-car-trove-server.vercel.app/update/${current._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json',
@@ -106,7 +106,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/deleteToy/${id}`, {
+                fetch(`https://toy-car-trove-server.vercel.app/deleteToy/${id}`, {
                     method: "DELETE",
                     headers: {
                         'content-type': 'application/json',
@@ -215,7 +215,7 @@ const MyToys = () => {
                                                 <option value="">Select a car type</option>
                                                 <option value="Classic Cars">Classic Cars</option>
                                                 <option value="Racing Cars">Racing Cars</option>
-                                                <option value="Collectibles Cars">Collectibles Cars</option>
+                                                <option value="Sports Cars">Sports Cars</option>
                                                 <option value="Vintage Cars">Vintage Cars</option>
                                                 <option value="Muscle Cars">Muscle Cars</option>
                                                 <option value="Sports Cars">Sports Cars</option>

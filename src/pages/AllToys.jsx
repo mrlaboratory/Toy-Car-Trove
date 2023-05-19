@@ -17,11 +17,11 @@ const AllToys = () => {
     const queryRef = useRef('')
 
     const [totalToys, setTotalToys] = useState(loaderData.totalToys)
-    const [limit, setLimit] = useState(10)
+    const [limit, setLimit] = useState(20)
     const [activePage, setActivePage] = useState(0)
 
     const pages = Math.ceil((totalToys / limit))
-    const totalPages = [...Array(pages).keys()]
+    let totalPages = pages ? [...Array(pages).keys()] : []
     const perPageArray = [5, 10, 20, 30]
 
 
@@ -33,14 +33,14 @@ const AllToys = () => {
     }
 
     useEffect(()=> {
-        fetch(`http://localhost:3000/allToys?page=${activePage}&limit=${limit}`)
+        fetch(`https://toy-car-trove-server.vercel.app/allToys?page=${activePage}&limit=${limit}`)
         .then(res => res.json())
         .then(d => {
             setData(d)
         })
     },[limit,activePage])
     useEffect(()=> {
-        fetch(`http://localhost:3000/toysByText?text=${q}`)
+        fetch(`https://toy-car-trove-server.vercel.app/toysByText?text=${q}`)
         .then(res => res.json())
         .then(d => {
             setData(d)

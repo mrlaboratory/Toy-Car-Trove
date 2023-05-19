@@ -14,7 +14,7 @@ const Login = () => {
 
     useTitle('Login')
 
-    const { user, loginUser, loginWithGoogle, path } = useContext(AuthContext)
+    const { user, loginUser, loginWithGoogle, path,JWT } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
@@ -29,6 +29,10 @@ const Login = () => {
     const loginWithGoogleHandle = () => {
         loginWithGoogle()
             .then(res => {
+                const loggedUser = {
+                    email: res.email,
+                }
+                JWT(loggedUser)
                 setSuccess('Login successfull')
                 toast.success('Login successfull')
             })
@@ -44,6 +48,10 @@ const Login = () => {
         const password = form.password.value
         loginUser(email, password)
             .then(res => {
+                const loggedUser = {
+                    email: res.email,
+                }
+                JWT(loggedUser)
                 setSuccess('Login successfull')
                 toast.success('Login successfull')
 
