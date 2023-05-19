@@ -5,10 +5,12 @@ import { FcGoogle } from 'react-icons/Fc';
 import { AuthContext } from '../auth/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { updateProfile } from 'firebase/auth';
+import useTitle from '../Hooks/useTitle';
 
 
 
 const Register = () => {
+    useTitle('Register')
     const { createUser, user } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')

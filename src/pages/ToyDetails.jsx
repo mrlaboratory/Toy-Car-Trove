@@ -3,8 +3,10 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/Ai';
 import { BsStarHalf } from 'react-icons/Bs';
 import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../Hooks/useTitle';
 
 const ToyDetails = () => {
+    useTitle('Toy Details')
     const toy = useLoaderData()
     console.log(toy)
 

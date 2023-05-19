@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../auth/AuthProvider';
 import { toast } from 'react-hot-toast';
+import useTitle from '../Hooks/useTitle';
 
 const AddToy = () => {
+    useTitle('Add a Toy')
 
     const { user } = useContext(AuthContext)
     const [selectedCarCategory, setSelectedCarCategory] = useState("");

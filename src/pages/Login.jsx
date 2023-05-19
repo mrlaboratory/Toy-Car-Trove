@@ -4,12 +4,15 @@ import { BiShow, BiHide } from 'react-icons/Bi';
 import { FcGoogle } from 'react-icons/Fc';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../auth/AuthProvider';
+import useTitle from '../Hooks/useTitle';
 
 
 
 
 // this is login page 
 const Login = () => {
+
+    useTitle('Login')
 
     const { user, loginUser, loginWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
