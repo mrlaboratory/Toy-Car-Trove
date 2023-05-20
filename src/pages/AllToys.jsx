@@ -33,14 +33,14 @@ const AllToys = () => {
     }
 
     useEffect(()=> {
-        fetch(`https://toy-car-trove-server.vercel.app/allToys?page=${activePage}&limit=${limit}`)
+        fetch(`https://toy-cars-server.onrender.com/allToys?page=${activePage}&limit=${limit}`)
         .then(res => res.json())
         .then(d => {
             setData(d)
         })
     },[limit,activePage])
     useEffect(()=> {
-        fetch(`https://toy-car-trove-server.vercel.app/toysByText?text=${q}`)
+        fetch(`https://toy-cars-server.onrender.com/toysByText${q && `?text=${q}`}`)
         .then(res => res.json())
         .then(d => {
             setData(d)

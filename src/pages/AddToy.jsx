@@ -30,7 +30,7 @@ const AddToy = () => {
 
         const toyInfo = {itemName,itemPicture, sellerName, sellerEmail, category, price, rating, quantity, description}
         console.log(toyInfo)
-        fetch(`https://toy-car-trove-server.vercel.app/addToy`,{
+        fetch(`https://toy-cars-server.onrender.com/addToy`,{
             method:'POST',
             headers: {
                 'content-type': 'application/json',

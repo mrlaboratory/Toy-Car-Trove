@@ -21,8 +21,8 @@ const router = createBrowserRouter([
             { path: '/login', element: <Login></Login> },
             { path: '/blogs', element: <Blogs></Blogs> },
             { path: '/register', element: <Register></Register> },
-            { path: '/alltoys', element: <AllToys></AllToys> , loader: () => fetch(`https://toy-car-trove-server.vercel.app/totalToys`)},
-            { path: '/toy/:id', element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute> , loader: ({params}) => fetch(`https://toy-car-trove-server.vercel.app/toy/${params.id}`)},
+            { path: '/alltoys', element: <AllToys></AllToys> , loader: () => fetch(`https://toy-cars-server.onrender.com/totalToys`)},
+            { path: '/toy/:id', element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute> , loader: ({params}) => fetch(`https://toy-cars-server.onrender.com/toy/${params.id}`)},
 
 
 

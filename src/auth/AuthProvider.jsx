@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
 
 
 const JWT = uu => {
-    fetch('https://toy-car-trove-server.vercel.app/jwt', {
+    fetch('https://toy-cars-server.onrender.com/jwt', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -57,21 +57,21 @@ const JWT = uu => {
             const localToken = localStorage.getItem('userToken')
             if (currentUser && currentUser?.email) {
 
-                // fetch(`https://toy-car-trove-server.vercel.app/check`, {
-                //     method: 'GET',
-                //     headers: {
-                //         'content-type': 'application/json',
-                //         authorization: `Bearer ${localStorage.getItem('userToken')}`
-                //     },
-                // })
-                // .then(res => res.json())
-                // .then(d => {
-                //     console.log(d)
-                //     if(d.error ){
-                //         toast.error('Session expire , Please login Again !!')
-                //     }
-                // })
-                // .catch(e => console.log(e))
+                fetch(`https://toy-cars-server.onrender.com/check`, {
+                    method: 'GET',
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('userToken')}`
+                    },
+                })
+                .then(res => res.json())
+                .then(d => {
+                    console.log(d)
+                    if(d.error ){
+                        toast.error('Session expired , Please login Again !!')
+                    }
+                })
+                .catch(e => console.log(e))
 
 
 

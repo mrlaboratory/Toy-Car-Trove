@@ -51,7 +51,7 @@ const Reviews = () => {
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
         function handleResize() {
-            setIsMobile(window.innerWidth <= 600);
+            setIsMobile(window.innerWidth <= 500);
         }
         window.addEventListener('resize', handleResize);
 
@@ -67,7 +67,7 @@ const Reviews = () => {
             <div className='p-5 mt-5'>
                 <Swiper
                     spaceBetween={20}
-                    slidesPerView={isMobile ? 2 : 3}
+                    slidesPerView={isMobile ? 1 : 2}
                 // onSlideChange={() => console.log('slide change')}
                 // onSwiper={(swiper) => console.log(swiper)}
                 >
