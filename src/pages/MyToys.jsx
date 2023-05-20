@@ -28,7 +28,7 @@ const MyToys = () => {
     useTitle('My Toys')
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`https://toy-cars-server.onrender.com/mytoys?email=${user.email}&sort=${sort}`, {
+        fetch(`https://toy-car-trove-server.vercel.app/mytoys?email=${user.email}&sort=${sort}`, {
             method: "GET",
             headers: {
                 'content-type': 'application/json',
@@ -64,8 +64,8 @@ const MyToys = () => {
         const description = form.description.value
 
         const toyInfo = { itemName, itemPicture, sellerName, sellerEmail, category, price, rating, quantity, description }
-        fetch(`https://toy-cars-server.onrender.com/update/${current._id}`, {
-            method: "PUT",
+        fetch(`https://toy-car-trove-server.vercel.app/update/${current._id}`, {
+            method: "PATCH",
             headers: {
                 'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('userToken')}`
@@ -106,7 +106,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://toy-cars-server.onrender.com/deleteToy/${id}`, {
+                fetch(`https://toy-car-trove-server.vercel.app/deleteToy/${id}`, {
                     method: "DELETE",
                     headers: {
                         'content-type': 'application/json',

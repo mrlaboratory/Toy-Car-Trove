@@ -30,7 +30,7 @@ const Category = () => {
     }
 
     useEffect(() => {
-        category && fetch(`https://toy-cars-server.onrender.com/toysByCategory/${category}`)
+        category && fetch(`https://toy-car-trove-server.vercel.app/toysByCategory/${category}`)
             .then(res => res.json())
             .then(d => {
                 setData(d)

@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
 
 
 const JWT = uu => {
-    fetch('https://toy-cars-server.onrender.com/jwt', {
+    fetch('https://toy-car-trove-server.vercel.app/jwt', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -51,38 +51,37 @@ const JWT = uu => {
 
 
 
-    useEffect(() => {
-        const unsub = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser)
-            const localToken = localStorage.getItem('userToken')
-            if (currentUser && currentUser?.email) {
-
-                fetch(`https://toy-cars-server.onrender.com/check`, {
-                    method: 'GET',
-                    headers: {
-                        'content-type': 'application/json',
-                        authorization: `Bearer ${localStorage.getItem('userToken')}`
-                    },
-                })
-                .then(res => res.json())
-                .then(d => {
-                    console.log(d)
-                    if(d.error ){
-                        toast.error('Session expired , Please login Again !!')
-                    }
-                })
-                .catch(e => console.log(e))
-
-
-
-
-            }
-            setLoading(false)
-        })
-        return () => {
-            return unsub()
-        }
-    }, [])
+useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      const localToken = localStorage.getItem('userToken');
+      if (currentUser && currentUser?.email) {
+        setTimeout(() => {
+          fetch(`https://toy-car-trove-server.vercel.app/check`, {
+            method: 'GET',
+            headers: {
+              'content-type': 'application/json',
+              authorization: `Bearer ${localStorage.getItem('userToken')}`,
+            },
+          })
+            .then((res) => res.json())
+            .then((d) => {
+              console.log(d);
+              if (d.error) {
+                toast.error('Session expired, please login again!');
+              }
+              console.log(d)
+            })
+            .catch((e) => console.log(e));
+        }, 2000); // Delay of 2 seconds (2000 milliseconds)
+      }
+      setLoading(false);
+    });
+    return () => {
+      return unsub();
+    };
+  }, []);
+  
 
     const info = {
         auth,
